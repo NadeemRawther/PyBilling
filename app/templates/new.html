@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>New Order</h1>
+  <form action="" method=post class="form-inline">
+    <input type="text" id="content" name="content" class="input-xlarge"
+            placeholder="New user" value="{{ request.form.content }}"
+            required>
+     <button type="submit" class="btn btn-primary">Add New User</button>
+  </form>
+{% endblock %}

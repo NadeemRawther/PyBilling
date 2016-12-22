@@ -1,0 +1,45 @@
+<!doctype html>
+<title>Alacarte Web Application</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<link href="/static/css/bootstrap.css" rel="stylesheet">
+<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+<style>
+body {
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+</style>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+ 
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                    data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="brand" href="/">Alacarte</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/new">Users</a></li>
+                        <li><a href="/new">Roles</a></li>
+                        <li><a href="/new">Categories</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+</div>
+ 
+{%- for category, message in get_flashed_messages(with_categories=true) %}
+  <p class="flask {{ category }}-flash">{{
+    "Error: " if category == 'error' }}{{ message }}</p>
+{%- endfor %}
+<div id="main" class="container">
+    {% block body %}{% endblock %}
+</div>

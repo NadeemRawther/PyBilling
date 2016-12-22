@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+<div id="main" class="container">
+
+    <table class="table table-bordered">
+    <div class="control-group">
+      <a href="{{ url_for('new') }}" class="btn btn-primary">New User</a>
+    </div>
+    <thead>
+      <tr>
+        <th>Id
+        <th>User Name
+        <th>Email
+        <th>Created
+        <th>Action
+      </tr>
+      <tbody>
+      {%- for user in users %}
+      <tr class={{"success" if true }}>
+        <td><a href="/api/users/{{ user.id }}">{{ user.id }}</a></td>
+        <td style={{"text-decoration:line-through" if true }}>{{ user.email }}</td>
+        <td>{%- if true %}
+              <span class="label label-success">Completed</span>
+            {%- else %}
+              <span class="label label-warning">Pending</span>
+            {%- endif %}
+        </td>
+        <td>{{ user.created_at.strftime('%d-%m-%Y') }}</td>
+        <td><a href="/api/users/{{ user.id }}" class="btn btn-danger">Edit</a>
+            <a href="{{ url_for('delete', user_id = user.id) }}" class="btn btn-danger">Delete</a>
+        </td>
+      {%- endfor %}
+
+    </tr>
+    </tbody>
+    </table>
+    <p>
+
+</div>
+{% endblock %}
