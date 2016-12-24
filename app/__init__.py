@@ -32,6 +32,11 @@ def login():
             return render_template('index.html')
     return render_template('login.html', error=error)
 
+@app.route("/users", methods=['GET'])
+def get_users():
+    return render_template('users.html',
+        users=Users.query.order_by(Users.created_at.desc()).all()
+    )
 @app.route('/new', methods=['GET', 'POST'])
 def new():
     return render_template('new.html')
